@@ -25,7 +25,9 @@ mongoose.connect('mongodb://localhost/bug-note-tracker', {
 .then(()=> console.log('MongoDB Connected!'))
 .catch(err => console.log(err));
 
-
+//Load Item Model
+require('./models/Item')
+const Item = mongoose.model('items');
 
 
 // ROUTES
@@ -42,8 +44,25 @@ app.get('/addbug', (req, res)=>{
 
 // Addbug Post Route
 app.post('/addbug', (req, res)=>{
-    console.log(req.body);
-    res.send('Posted');
+    let errors = [];
+
+    if(!req.body.title){
+        errors.push({text: "Please add a title"});
+    }
+
+    if(!req.body.description){
+        errors.push({text: "Please add a description"});
+    }
+    const newItem = ({
+        title: req.body.title, 
+        bugnumber: req.body.bugnumber || '', 
+        description: req.body.description
+    });
+
+    new Item(newItem).save()
+        .then(item =>{
+            res.send('Item added');
+        });
 });
 
 

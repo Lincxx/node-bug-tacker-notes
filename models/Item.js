@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema();
+const Schema = mongoose.Schema;
 
 // Create Schema
 const ItemSchema = new Schema({
-    bugnote:{
+    title:{
         type: String,
         requried: true
     }, 
@@ -17,7 +17,7 @@ const ItemSchema = new Schema({
         type: Date, 
         default: Date.now
     }
-})
+});
 
 
 // Create the model, based on the schema
