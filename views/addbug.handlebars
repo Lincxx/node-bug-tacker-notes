@@ -1,20 +1,52 @@
 <h3 class="mt-4 text-center">Add Bug/Note</h3>
 
-<form action="/addbug" method="post">
+<form action="/addbug" method="post" id="bug-note-input">
      <div class="form-group">
         <label for="bug-note">Bug or Note</label>
-        <select class="form-control" id="bug-note" name="title">
+        <select class="form-control" id="bug-note" name="title" onchange="noteOnly()">
             <option>Bug</option>
             <option>Note</option>
         </select>
     </div>
-    <div class="form-group">
+    <div class="form-group" id="importance-input">
+        <label for="importance">Importance</label>
+        <select class="form-control" id="importance" name="importance">
+            <option>Normal</option>
+            <option>Critical</option>
+            <option>Major</option>
+            <option>Low</option>
+        </select>
+    </div>
+    <div class="form-group" id="status-input">
+        <label for="status">Status</label>
+        <select class="form-control" id="status" name="status">
+            <option>Current</option>
+            <option>QA</option>
+            <option>On Hold</option>
+            <option>RFP</option>
+        </select>
+    </div>
+    <div class="form-group" id="bug-number-input">
         <label for="bug-number">Bug Number</label>
         <input type="text" class="form-control" id="bug-number" placeholder="25342" name="bugnumber">
     </div>
-    <div class="form-group">
+    <div class="form-group" id="query-input">
+        <label for="query">Query</label>
+        <textarea class="form-control" id="query" rows="3" name="query"></textarea>
+    </div>
+    <div class="form-group" id="description-input">
         <label for="description">Description</label>
         <textarea class="form-control" id="description" rows="3" name="description"></textarea>
     </div>
     <button type="submit" class="btn btn-outline-primary">Add</button>
 </form>
+
+<script>
+    //let noteOnly = () => {
+        //let importance = document.querySelector('#importance-input').style.display;
+        //let status = document.querySelector('#status-input').style.display;
+        //let bug-number = document.querySelector('#bug-number-input').style.display;
+        //let query = document.querySelector('#query-input').style.display;
+        
+    //}
+</script>
