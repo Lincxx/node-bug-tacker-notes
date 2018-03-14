@@ -55,14 +55,28 @@ app.post('/addbug', (req, res)=>{
     }
     const newItem = ({
         title: req.body.title, 
+        importance: req.body.importance,
+        status: req.body.status,
         bugnumber: req.body.bugnumber || '', 
+        query: req.body.query || '',
         description: req.body.description
     });
 
     new Item(newItem).save()
         .then(item =>{
-            res.send('Item added');
+            res.redirect('bugs');
         });
+});
+
+// View all bug 
+app.get('/bugs', (req, res)=> {
+    Item.find()
+        .then(items => {
+            
+            res.render('bug-notes', {
+                items: items
+            })
+        })
 });
 
 

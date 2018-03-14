@@ -3,13 +3,24 @@ const Schema = mongoose.Schema;
 
 // Create Schema
 const ItemSchema = new Schema({
-    title:{
+    title: {
         type: String,
         requried: true
     }, 
-    bugnumber:{
-        type: String
+    importance: {
+        type: String,
+        required: true
     }, 
+    status: {
+        type: String, 
+        required: true
+    },
+    bugnumber: {
+        type: String
+    },
+    query: {
+        type: String
+    },
     description:{
         type: String
     },
